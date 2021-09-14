@@ -127,29 +127,26 @@ int* insert(int arr[], int& n, int insert_value, int insert_index)
 }
 int* pop_back(int arr[], int& n)
 {
-	int* buffer = new int[n + 2];
+	int* buffer = new int[--n];
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i] = arr[i];
 	}
 	delete[] arr;
-	arr = buffer;
-	arr[n-1] = NULL;
-	n--;
-	return arr;
+	return buffer;
 }
 int* pop_front(int arr[], int& n)
 {
-	int* buffer = new int[n + 1];
+	int* buffer = new int[--n];
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i] = arr[i + 1];
 	}
 	delete[] arr;
-	arr = buffer;
+	/*arr = buffer;
 	//arr[n] = NULL;
-	n--;
-	return arr;
+	n--;*/
+	return buffer;
 }
 int* erase(int arr[], int& n, int pop_index)
 {

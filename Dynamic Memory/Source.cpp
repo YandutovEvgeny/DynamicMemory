@@ -6,13 +6,13 @@ using std::endl;
 void FillRand(int arr[], const unsigned int n);
 void Print(int arr[], const unsigned int n);
 
-int* push_back(int arr[], int& n, int r_value); 
-int* push_front(int arr[], int& n, int l_value);
-int* insert(int arr[], int& n, int insert_value, int insert_index);
+void push_back(int*& arr, int& n, int r_value); 
+void push_front(int*& arr, int& n, int l_value);
+void insert(int*& arr, int& n, int insert_value, int insert_index);
 
-int* pop_back(int arr[], int& n);
-int* pop_front(int arr[], int& n);
-int* erase(int arr[], int& n, int pop_index);
+void pop_back(int*& arr, int& n);
+void pop_front(int*& arr, int& n);
+void erase(int*& arr, int& n, int pop_index);
 
 void main()
 {
@@ -25,33 +25,33 @@ void main()
 	
 	int r_value;
 	cout << "Введите добавляемое значение в конец массива: "; cin >> r_value;
-	arr = push_back(arr, n, r_value);
+	push_back(arr, n, r_value);
 	Print(arr, n);
 	
 	int l_value;
 	cout << "Введите добавляемое значение в начало массива: "; cin >> l_value;
-	arr = push_front(arr, n, l_value);
+	push_front(arr, n, l_value);
 	Print(arr, n);
 
 	int insert_value;
 	int insert_index;
 	cout << "Введите добавлемое значение: "; cin >> insert_value;
 	cout << "Введите индекс массива в который хотите вставить значение: "; cin >> insert_index;
-	arr = insert(arr, n, insert_value, insert_index);
+	insert(arr, n, insert_value, insert_index);
 	Print(arr, n);
 
 	cout << "Удаление последнего элемента в массиве: " << endl;
-	arr = pop_back(arr, n);
+	pop_back(arr, n);
 	Print(arr, n);
 
 	cout << "Удаление первого элемента в массиве: " << endl;
-	arr = pop_front(arr, n);
+	pop_front(arr, n);
 	Print(arr, n);
 
 	int pop_index;
 	int indif = 0;
 	cout << "Введите удаляемый индекс: "; cin >> pop_index;
-	arr = erase(arr, n, pop_index);
+	erase(arr, n, pop_index);
 	Print(arr, n);
 
 	delete[] arr;
@@ -71,7 +71,7 @@ void Print(int arr[], const unsigned int n)
 	}
 	cout << endl;
 }
-int* push_back(int arr[], int& n, int r_value)
+void push_back(int*& arr, int& n, int r_value)
 {
 	//Добавление элементов в массив
 
@@ -91,9 +91,8 @@ int* push_back(int arr[], int& n, int r_value)
 	//6) После добавления элемента в массив, количество его элементов увеличивается 
 	//на 1:
 	n++;
-	return arr;
 }
-int* push_front(int arr[], int& n, int l_value)
+void push_front(int*& arr, int& n, int l_value)
 {
 	int* buffer = new int[n + 1];
 	for (int i = 0; i < n; i++)
@@ -105,9 +104,9 @@ int* push_front(int arr[], int& n, int l_value)
 	arr = buffer;
 	arr[0] = l_value;
 	n++;
-	return arr;
+	
 }
-int* insert(int arr[], int& n, int insert_value, int insert_index)
+void insert(int*& arr, int& n, int insert_value, int insert_index)
 {
 	int* buffer = new int[n + 1];
 	for (int i = 0; i < insert_index; i++)
@@ -123,9 +122,8 @@ int* insert(int arr[], int& n, int insert_value, int insert_index)
 	arr = buffer;
 	buffer[insert_index] = insert_value;
 	n++;
-	return arr;
 }
-int* pop_back(int arr[], int& n)
+void pop_back(int*& arr, int& n)
 {
 	int* buffer = new int[--n];
 	for (int i = 0; i < n; i++)
@@ -133,9 +131,9 @@ int* pop_back(int arr[], int& n)
 		buffer[i] = arr[i];
 	}
 	delete[] arr;
-	return buffer;
+	arr = buffer;
 }
-int* pop_front(int arr[], int& n)
+void pop_front(int*& arr, int& n)
 {
 	int* buffer = new int[--n];
 	for (int i = 0; i < n; i++)
@@ -143,9 +141,9 @@ int* pop_front(int arr[], int& n)
 		buffer[i] = arr[i + 1];
 	}
 	delete[] arr;
-	return buffer;
+	arr = buffer;
 }
-int* erase(int arr[], int& n, int pop_index)
+void erase(int*& arr, int& n, int pop_index)
 {
 	int* buffer = new int[--n];
 	for (int i = 0; i < pop_index; i++)
@@ -158,6 +156,4 @@ int* erase(int arr[], int& n, int pop_index)
 	}
 	delete[] arr;
 	arr = buffer;
-	return buffer;
-	
 }

@@ -122,13 +122,13 @@ void insert(int** arr, int& n, int insert_value, int insert_index)
 }
 void pop_back(int** arr, int& n)
 {
-	int* buffer = new int[--n];
+	int* buffer = new int[--n]; 
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i] = (*arr)[i];
 	}
-	*arr = buffer;
 	delete[] *arr;
+	*arr = buffer;
 }
 void pop_front(int** arr, int& n)
 {
@@ -137,8 +137,8 @@ void pop_front(int** arr, int& n)
 	{
 		buffer[i] = (*arr)[i + 1];
 	}
-	*arr = buffer;
 	delete[] *arr;
+	*arr = buffer;
 }
 void erase(int** arr, int& n, int pop_index)
 {

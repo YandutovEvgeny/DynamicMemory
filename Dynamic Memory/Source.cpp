@@ -3,6 +3,10 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+int** allocate(const unsigned int rows, const unsigned int cols);
+void clear(int** arr, const unsigned int rows);
+
+
 void FillRand(int arr[], int& n);
 void FillRand(int** arr, const unsigned int rows, const unsigned int cols);
 void Print(int arr[], int& n);
@@ -15,6 +19,8 @@ int* insert(int arr[], int& n, int insert_value, int insert_index);
 int* pop_back(int arr[], int& n);
 int* pop_front(int arr[], int& n);
 int* erase(int arr[], int& n, int pop_index);
+
+int** push_row_back(int** arr, unsigned int& rows, const unsigned int cols);
 
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
@@ -64,10 +70,34 @@ void main()
 #endif // DYNAMIC_MEMORY_1
 
 #ifdef DYNAMIC_MEMORY_2
-	int rows;
-	int cols;
+	unsigned int rows;
+	unsigned int cols;
 	cout << "Введите количество строк: "; cin >> rows;
 	cout << "Введите количество элементов строки: "; cin >> cols;
+	int** arr = allocate(rows, cols);
+	/////////////////////////////////////////////////////////////////////////////
+	////////  Обращение к элементам двумерного динамического массива:    ////////
+	/////////////////////////////////////////////////////////////////////////////
+	FillRand(arr, rows, cols);
+	Print(arr, rows, cols);
+	cout << "\n----------------------------------------\n";
+	arr = push_row_back(arr, rows, cols);
+	
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			cout << *(*(arr + i) + j) << "\t";
+		}
+		cout << endl;
+	}
+	clear(arr, rows);
+	
+#endif // DYNAMIC_MEMORY_2
+}
+int** allocate(const unsigned int rows, const unsigned int cols)
+{
 	/////////////////////////////////////////////////////////////////////////////
 	//////////////     Объявление двумерного динамического массива:      ////////
 	/////////////////////////////////////////////////////////////////////////////
@@ -78,11 +108,10 @@ void main()
 	{
 		arr[i] = new int[cols] {};
 	}
-	/////////////////////////////////////////////////////////////////////////////
-	////////  Обращение к элементам двумерного динамического массива:    ////////
-	/////////////////////////////////////////////////////////////////////////////
-	FillRand(arr, rows, cols);
-	Print(arr, rows, cols);
+	return arr;
+}
+void clear(int** arr, const unsigned int rows)
+{
 	/////////////////////////////////////////////////////////////////////////////
 	////////         Удаление двумерного динамического массива:          ////////
 	/////////////////////////////////////////////////////////////////////////////
@@ -93,8 +122,6 @@ void main()
 	}
 	//2) Удаляем массив указателей:
 	delete[] arr;
-#endif // DYNAMIC_MEMORY_2
-
 }
 void FillRand(int arr[], int& n)
 {
@@ -220,5 +247,25 @@ int* erase(int arr[], int& n, int pop_index)
 	}
 	delete[] arr;
 	arr = buffer;
+	return arr;
+}
+int** push_row_back(int** arr, unsigned int& rows, const unsigned int cols)
+{
+	//1)Создаём буфферный массив указателей:
+	int** buffer = new int* [rows + 1]{};
+	//2)Копируем адреса строк в буфферный массив указателей
+	for (int i = 0; i < rows; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	//3)Удаляем исходный массив указателей:
+	delete[] arr;
+	//4)Подменяем исходный массив буфферным:
+	arr = buffer;
+	//5)Добавляем в массив новую строку:
+	arr[rows] = new int[cols] {};
+	//6)Увеличиваем количество строк:
+	rows++;
+	//7)Возвращаем новый массив на место вызова:
 	return arr;
 }

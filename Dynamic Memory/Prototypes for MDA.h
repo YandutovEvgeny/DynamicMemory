@@ -1,6 +1,6 @@
-#pragma once
+п»ї#pragma once
 #include"stdafx.h"
-//Основные функции для двумерного массива:
+//РћСЃРЅРѕРІРЅС‹Рµ С„СѓРЅРєС†РёРё РґР»СЏ РґРІСѓРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР°:
 int** push_row_back(int** arr, unsigned int& rows, const unsigned int cols);
 int** push_row_front(int** arr, unsigned int& rows, const unsigned int cols);
 int** insert_row(int** arr, unsigned int& rows, const unsigned int cols, unsigned int insert_index);

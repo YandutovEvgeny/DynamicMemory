@@ -1,5 +1,5 @@
-#pragma once
+п»ї#pragma once
 #include"stdafx.h"
-//Создание & удаление двумерного массива:
+//РЎРѕР·РґР°РЅРёРµ & СѓРґР°Р»РµРЅРёРµ РґРІСѓРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР°:
 int** allocate(const unsigned int rows, const unsigned int cols);
 void clear(int** arr, const unsigned int rows);

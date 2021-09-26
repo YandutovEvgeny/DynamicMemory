@@ -142,6 +142,15 @@
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="allocate-n-clear.h" />
+    <ClInclude Include="Fill-n-Print.h" />
+    <ClInclude Include="Prototypes for MDA.h" />
+    <ClInclude Include="Prototypes for ODA.h" />
+    <ClInclude Include="Realizations for MDA.h" />
+    <ClInclude Include="Realizations for ODA.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

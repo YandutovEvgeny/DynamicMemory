@@ -19,4 +19,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Prototypes for ODA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Realizations for ODA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Realizations for MDA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prototypes for MDA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fill-n-Print.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="allocate-n-clear.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

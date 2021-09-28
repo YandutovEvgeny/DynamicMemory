@@ -6,9 +6,9 @@ using std::endl;
 #define DYNAMIC_MEMORY_2
 
 //Заполнение массивов & вывод на экран:
-void FillRand(int arr[], int& n);
-void FillRand(int** arr, const unsigned int rows, const unsigned int cols);
-void Print(int arr[], int& n);
+void FillRand(int arr[], const unsigned int n, int minRand = 0, int maxRand = 100);
+void FillRand(int** arr, const unsigned int rows, const unsigned int cols, int minRand = 0, int maxRand = 100);
+void Print(int arr[], const unsigned int n);
 void Print(int** arr, const unsigned int rows, const unsigned int cols);
 
 //Создание и удаление двумерного массива:
@@ -30,6 +30,8 @@ int** insert_row(int** arr, unsigned int& rows, const unsigned int cols, unsigne
 int** pop_row_back(int** arr, unsigned int& rows, const unsigned int cols);
 int** pop_row_front(int** arr, unsigned int& rows, const unsigned int cols);
 int** erase_row(int** arr, unsigned int& rows, const unsigned int cols, unsigned int pop_index);
+
+void push_col_back(int** arr, const unsigned int rows, unsigned int& cols);
 
 void main()
 {
@@ -89,9 +91,10 @@ void main()
 	
 	cout << "Добавление строки в конец массива: " << endl;
 	arr = push_row_back(arr, rows, cols);
+	FillRand(arr[rows - 1], cols, 200, 300);
 	Print(arr, rows, cols);
 	
-	cout << "Добавление строки в начало массива: " << endl;
+	/*cout << "Добавление строки в начало массива: " << endl;
 	arr = push_row_front(arr, rows, cols);
 	Print(arr, rows, cols);
 
@@ -111,6 +114,15 @@ void main()
 	int pop_index;
 	cout << "Введите индекс ряда массива из которого хотите удалить строку: "; cin >> pop_index;
 	arr = erase_row(arr, rows, cols, pop_index);
+	Print(arr, rows, cols);*/
+
+	cout << "Добавление столбца в конец массива: " << endl;
+	push_col_back(arr, rows, cols);
+	//Заполнение "случайными" числами стобца в конце массива:
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i][cols - 1] = rand() % 100;
+	}
 	Print(arr, rows, cols);
 
 	/*for (int i = 0; i < rows; i++)
@@ -125,14 +137,14 @@ void main()
 #endif // DYNAMIC_MEMORY_2
 }
 //Для одномерных массивов:
-void FillRand(int arr[], int& n)
+void FillRand(int arr[], const unsigned int n, int minRand, int maxRand)
 {
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand() % 100;
+		arr[i] = rand() % (maxRand - minRand) + minRand;
 	}
 }
-void Print(int arr[], int& n)
+void Print(int arr[], const unsigned int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -231,13 +243,13 @@ int* erase(int arr[], int& n, int pop_index)
 	return arr;
 }
 //Для двумерных массивов:
-void FillRand(int** arr, const unsigned int rows, const unsigned int cols)
+void FillRand(int** arr, const unsigned int rows, const unsigned int cols, int minRand, int maxRand)
 {
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			arr[i][j] = rand() % 100;
+			arr[i][j] = rand() % (maxRand - minRand) + minRand;
 		}
 	}
 }
@@ -365,4 +377,25 @@ int** erase_row(int** arr, unsigned int& rows, const unsigned int cols, unsigned
 	delete[] arr;
 	arr = buffer;
 	return arr;
+}
+void push_col_back(int** arr, const unsigned int rows, unsigned int& cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		//1) Создаём буфферную строку, размером на 1 элемент больше:
+		int* buffer = new int [cols + 1]{};
+		//2) Копируем исходную строку в буфферную:
+		for (int j = 0; j < cols; j++)
+		{
+			buffer[j] = arr[i][j];
+		}
+		//3) Удаляем исходную строку
+		delete[] arr[i];
+		arr[i] = buffer;
+
+	}
+	//4) После того, как в каждой строке добавилось по элементу, 
+	//количество стобцов увеличилось на 1:
+	cols++;
+	
 }

@@ -219,6 +219,7 @@ int* push_front(int arr[], int& n, int l_value)
 }
 int* insert(int arr[], int& n, int insert_value, int insert_index)
 {
+	if (insert_index >= n)return arr;
 	int* buffer = new int[n + 1];
 	for (int i = 0; i < insert_index; i++)
 	{
@@ -258,6 +259,7 @@ int* pop_front(int arr[], int& n)
 }
 int* erase(int arr[], int& n, int pop_index)
 {
+	if (pop_index >= n)return arr;
 	int* buffer = new int[--n];
 	for (int i = 0; i < pop_index; i++)
 	{
@@ -355,6 +357,7 @@ int** push_row_front(int** arr, unsigned int& rows, const unsigned int cols)
 }
 int** insert_row(int** arr, unsigned int& rows, const unsigned int cols, unsigned int insert_index)
 {
+	if (insert_index >= rows)return arr;
 	int** buffer = new int* [rows + 1]{};
 	for (int i = 0; i < rows; i++)
 	{

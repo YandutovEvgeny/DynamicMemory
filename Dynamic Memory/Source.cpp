@@ -1,9 +1,33 @@
-﻿#include"stdafx.h"
-#include"AllocateAndClear.h"
-#include"FillRandAndPrint.h"
-#include"PushBackAndFront.h"
+﻿#include<iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+//#define DYNAMIC_MEMORY_1
+#define DYNAMIC_MEMORY_2
+
+//Заполнение массивов & вывод на экран:
+template <typename T>
+void FillRand(T arr[], const unsigned int n, int minRand = 0, int maxRand = 100);
+template <typename T>
+void FillRand(T** arr, const unsigned int rows, const unsigned int cols, int minRand = 0, int maxRand = 100);
+void FillRand(double** arr, const unsigned int rows, const unsigned int cols);
+void FillRand(float** arr, const unsigned int rows, const unsigned int cols);
+template <typename T>
+void Print(T arr[], const unsigned int n);
+template <typename T>
+void Print(T** arr, const unsigned int rows, const unsigned int cols);
+
+//Создание и удаление двумерного массива:
+template <typename T>
+T** allocate(unsigned int rows, unsigned int cols);
+template <typename T>
+void clear(T** arr, const unsigned int rows);
 
 //Основные функции для одномерного массива:
+template <typename T>
+T* push_back(T arr[], int& n, int r_value);
+template <typename T>
+T* push_front(T arr[], int& n, int l_value);
 template <typename T>
 T* insert(T arr[], int& n, int insert_value, int insert_index);
 template <typename T>
@@ -14,7 +38,10 @@ template <typename T>
 T* erase(T arr[], int& n, int pop_index);
 
 //Основные функции для двумерного массива:
-
+template <typename T>
+T** push_row_back(T**& arr, unsigned int& rows, unsigned int& cols);
+template <typename T>
+T** push_row_front(T**& arr, unsigned int& rows, unsigned int& cols);
 template <typename T>
 T** insert_row(T**& arr, unsigned int& rows, unsigned int& cols, unsigned int insert_index);
 template <typename T>
@@ -24,7 +51,10 @@ T** pop_row_front(T**& arr, unsigned int& rows, unsigned int& cols);
 template <typename T>
 T** erase_row(T**& arr, unsigned int& rows, unsigned int& cols, unsigned int pop_index);
 
-
+template <typename T>
+void push_col_back(T**& arr, unsigned int& rows, unsigned int& cols);
+template <typename T>
+void push_col_front(T**& arr, unsigned int& rows, unsigned int& cols);
 template <typename T>
 void insert_col(T**& arr, unsigned int& rows, unsigned int& cols, unsigned int insert_index);
 template <typename T>

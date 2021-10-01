@@ -18,5 +18,40 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FillRandAndPrint.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="allocateAndclear.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="push_backAndpush_front.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pop_backAndpop_front.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="insertAnderase.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FillRandAndPrint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="allocateAndclear.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="push_backAndpush_front.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pop_backAndpop_front.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="insertAnderase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

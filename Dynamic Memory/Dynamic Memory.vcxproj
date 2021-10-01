@@ -140,7 +140,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="allocateAndclear.cpp" />
+    <ClCompile Include="FillRandAndPrint.cpp" />
+    <ClCompile Include="insertAnderase.cpp" />
+    <ClCompile Include="pop_backAndpop_front.cpp" />
+    <ClCompile Include="push_backAndpush_front.cpp" />
     <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="allocateAndclear.h" />
+    <ClInclude Include="FillRandAndPrint.h" />
+    <ClInclude Include="insertAnderase.h" />
+    <ClInclude Include="pop_backAndpop_front.h" />
+    <ClInclude Include="push_backAndpush_front.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include"stdafx.h"								
 template <typename T>
 T* push_back(T arr[], int& n, int r_value);

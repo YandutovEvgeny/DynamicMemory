@@ -1,6 +1,6 @@
-#pragma once
+п»ї#pragma once
 #include"stdafx.h"
-//Заполнение массивов & вывод на экран:
+//Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІРѕРІ & РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ:
 template <typename T>
 void FillRand(T arr[], const unsigned int n, int minRand = 0, int maxRand = 100);
 template <typename T>

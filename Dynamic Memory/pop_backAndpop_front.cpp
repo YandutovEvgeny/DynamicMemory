@@ -1,4 +1,4 @@
-#include"pop_backAndpop_front.h"
+﻿#include"pop_backAndpop_front.h"
 template <typename T>
 T* pop_back(T arr[], int& n)
 {

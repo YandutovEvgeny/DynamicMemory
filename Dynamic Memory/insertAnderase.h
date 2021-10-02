@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include"stdafx.h"
 template <typename T>
 T* insert(T arr[], int& n, int insert_value, int insert_index);

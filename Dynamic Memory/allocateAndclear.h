@@ -1,6 +1,6 @@
-#pragma once
+п»ї#pragma once
 #include"stdafx.h"
-//Создание и удаление двумерного массива:
+//РЎРѕР·РґР°РЅРёРµ Рё СѓРґР°Р»РµРЅРёРµ РґРІСѓРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР°:
 template <typename T>
 T** allocate(unsigned int rows, unsigned int cols);
 template <typename T>

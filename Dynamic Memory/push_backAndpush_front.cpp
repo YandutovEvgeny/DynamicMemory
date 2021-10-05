@@ -52,7 +52,7 @@ T** push_row_back(T**& arr, unsigned int& rows, unsigned int& cols)
 	//4)Подменяем исходный массив буфферным:
 	arr = buffer;
 	//5)Добавляем в массив новую строку:
-	arr[rows] = new T * [cols] {};
+	arr[rows] = new T[cols] {};
 	//6)Увеличиваем количество строк:
 	rows++;
 	//7)Возвращаем новый массив на место вызова:
@@ -68,7 +68,7 @@ T** push_row_front(T**& arr, unsigned int& rows, unsigned int& cols)
 	}
 	delete[] arr;
 	arr = buffer;
-	arr[0] = new T * [cols] {};
+	arr[0] = new T[cols] {};
 	rows++;
 	return arr;
 }

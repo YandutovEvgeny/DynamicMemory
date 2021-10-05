@@ -50,7 +50,7 @@ T** insert_row(T**& arr, unsigned int& rows, unsigned int& cols, unsigned int in
 	}
 	delete[] arr;
 	arr = buffer;
-	arr[insert_index] = new T * [cols] {};
+	arr[insert_index] = new T[cols] {};
 	rows++;
 	return arr;
 }

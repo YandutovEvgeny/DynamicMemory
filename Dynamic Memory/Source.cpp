@@ -446,6 +446,7 @@ void push_col_front(int** arr, const unsigned int rows, unsigned int& cols)
 }
 void insert_col(int** arr, const unsigned int rows, unsigned int& cols, unsigned int insert_index)
 {
+	if (insert_index >= rows)cout << "Индекс больше массива!\n";
 	for (int i = 0; i < rows; i++)
 	{
 		int* buffer = new int[cols + 1]{};
@@ -492,6 +493,7 @@ void pop_col_front(int** arr, const unsigned int rows, unsigned int& cols)
 }
 void erase_col(int** arr, const unsigned int rows, unsigned int& cols, unsigned int pop_index)
 {
+	if (pop_index >= rows)cout << "Индекс больше массива!\n";
 	for (int i = 0; i < rows; i++)
 	{
 		int* buffer = new int[cols-1];

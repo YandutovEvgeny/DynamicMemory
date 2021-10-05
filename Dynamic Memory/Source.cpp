@@ -63,7 +63,7 @@ void main()
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
 	
-	cout << "Добавление строки в конец массива: " << endl;
+	/*cout << "Добавление строки в конец массива: " << endl;
 	arr = push_row_back(arr, rows, cols);
 	FillRand(arr[rows - 1], cols, 200, 300);
 	Print(arr, rows, cols);
@@ -88,7 +88,7 @@ void main()
 	int pop_index;
 	cout << "Введите индекс ряда массива из которого хотите удалить строку: "; cin >> pop_index;
 	arr = erase_row(arr, rows, cols, pop_index);
-	Print(arr, rows, cols);
+	Print(arr, rows, cols);*/
 
 	cout << "Добавление столбца в конец массива: " << endl;
 	push_col_back(arr, rows, cols);
@@ -98,7 +98,7 @@ void main()
 	push_col_front(arr, rows, cols);
 	Print(arr, rows, cols);
 
-	//unsigned int insert_index;
+	unsigned int insert_index;
 	cout << "Введите индекс по которому хотите вставить столбец в массив: "; cin >> insert_index;
 	insert_col(arr, rows, cols, insert_index);
 	Print(arr, rows, cols);
@@ -111,7 +111,7 @@ void main()
 	pop_col_front(arr, rows, cols);
 	Print(arr, rows, cols);
 
-	//unsigned int pop_index;
+	unsigned int pop_index;
 	cout << "Введите индекс по которому хотите удалить столбец из массива: "; cin >> pop_index;
 	erase_col(arr, rows, cols, pop_index);
 	Print(arr, rows, cols);

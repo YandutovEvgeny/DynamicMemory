@@ -513,21 +513,25 @@ void push_col_front(T**& arr, unsigned int& rows, unsigned int& cols)
 template <typename T>
 void insert_col(T**& arr, unsigned int& rows, unsigned int& cols, unsigned int insert_index)
 {
-	for (int i = 0; i < rows; i++)
+	if (insert_index >= rows)cout << "Индекс больше массива!\n";
+	else
 	{
-		T* buffer = new T[cols + 1]{};
-		for (int j = 0; j < insert_index; j++)
+		for (int i = 0; i < rows; i++)
 		{
-			buffer[j] = arr[i][j];
+			T* buffer = new T[cols + 1]{};
+			for (int j = 0; j < insert_index; j++)
+			{
+				buffer[j] = arr[i][j];
+			}
+			for (int j = insert_index + 1; j < cols + 1; j++)
+			{
+				buffer[j] = arr[i][j - 1];
+			}
+			delete[] arr[i];
+			arr[i] = buffer;
 		}
-		for (int j = insert_index + 1; j < cols + 1; j++)
-		{
-			buffer[j] = arr[i][j-1];
-		}
-		delete[] arr[i];
-		arr[i] = buffer;
+		cols++;
 	}
-	cols++;
 }
 template <typename T>
 void pop_col_back(T**& arr, unsigned int& rows, unsigned int& cols)
@@ -562,19 +566,23 @@ void pop_col_front(T**& arr, unsigned int& rows, unsigned int& cols)
 template <typename T>
 void erase_col(T**& arr, unsigned int& rows, unsigned int& cols, unsigned int pop_index)
 {
-	for (int i = 0; i < rows; i++)
+	if (pop_index >= rows)cout << "Индекс больше массива!\n";
+	else
 	{
-		T* buffer = new T[cols-1];
-		for (int j = 0; j < pop_index; j++)
+		for (int i = 0; i < rows; i++)
 		{
-			buffer[j] = arr[i][j];
+			T* buffer = new T[cols - 1];
+			for (int j = 0; j < pop_index; j++)
+			{
+				buffer[j] = arr[i][j];
+			}
+			for (int j = pop_index; j < cols - 1; j++)
+			{
+				buffer[j] = arr[i][j + 1];
+			}
+			delete[] arr[i];
+			arr[i] = buffer;
 		}
-		for(int j = pop_index; j < cols-1; j++)
-		{
-			buffer[j] = arr[i][j + 1];
-		}
-		delete[] arr[i];
-		arr[i] = buffer;
+		--cols;
 	}
-	--cols;
 }

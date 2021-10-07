@@ -22,7 +22,7 @@ template <typename T>T** allocate(unsigned int rows, unsigned int cols);
 template <typename T>void clear(T** arr, const unsigned int rows);
 
 //Основные функции для одномерного массива:
-template <typename T>T* push_back(T arr[], int& n, int r_value);
+template <typename T>T* push_back(T arr[], unsigned int& n, int r_value);
 template <typename T>T* push_front(T arr[], int& n, int l_value);
 template <typename T>T* insert(T arr[], int& n, int insert_value, int insert_index);
 template <typename T>T* pop_back(T arr[], int& n);
@@ -208,7 +208,7 @@ void Print(T arr[], const unsigned int n)
 	cout << endl;
 }
 template <typename T>
-T* push_back(T arr[], int& n, int r_value)
+T* push_back(T arr[], unsigned int& n, int r_value)
 {
 	//Добавление элементов в массив
 
@@ -384,8 +384,9 @@ void clear(T** arr, const unsigned int rows)
 template <typename T>
 T** push_row_back(T**& arr, unsigned int& rows, unsigned int& cols)
 {
+#ifdef OLD
 	//1)Создаём буфферный массив указателей:
-	T** buffer = new T* [rows + 1]{};
+	T** buffer = new T * [rows + 1]{};
 	//2)Копируем адреса строк в буфферный массив указателей
 	for (int i = 0; i < rows; i++)
 	{
@@ -396,11 +397,13 @@ T** push_row_back(T**& arr, unsigned int& rows, unsigned int& cols)
 	//4)Подменяем исходный массив буфферным:
 	arr = buffer;
 	//5)Добавляем в массив новую строку:
-	arr[rows] = new T*[cols] {};
+	arr[rows] = new T * [cols] {};
 	//6)Увеличиваем количество строк:
 	rows++;
 	//7)Возвращаем новый массив на место вызова:
 	return arr;
+#endif // OLD
+	return push_back(arr, rows, new T[cols]{});
 }
 template <typename T>
 T** push_row_front(T**& arr, unsigned int& rows, unsigned int& cols)
@@ -481,6 +484,7 @@ void push_col_back(T**& arr, unsigned int& rows, unsigned int& cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
+#ifdef OLD
 		//1) Создаём буфферную строку, размером на 1 элемент больше:
 		T* buffer = new T[cols + 1]{};
 		//2) Копируем исходную строку в буфферную:
@@ -491,6 +495,9 @@ void push_col_back(T**& arr, unsigned int& rows, unsigned int& cols)
 		//3) Удаляем исходную строку
 		delete[] arr[i];
 		arr[i] = buffer;
+#endif // OLD
+		arr[i] = push_back(arr[i], cols, T());   //T() - значение по умолчанию для типа T
+		cols--;
 	}
 	//4) После того, как в каждой строке добавилось по элементу, 
 	//количество стобцов увеличилось на 1:
